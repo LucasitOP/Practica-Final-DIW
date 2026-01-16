@@ -41,3 +41,60 @@ encabezados, listas, enlaces, imágenes y atributo alt.
 Estructura clara de carpetas y archivos (html, css, img).
 ## 7. RESTRICCIONES
 No se permite JavaScript ni frameworks (React, Tailwind, …). Sólo HTML y CSS.
+
+## 8. RÚBRICA DE EVALUACIÓN
+
+Se evaluarán los siguientes aspectos:
+| Criterio | Excelente (10-9) | Adecuado (8-6) | Básico (5-4) | Insuficiente (<4) |
+| --- | --- | --- | --- | --- |
+| **Estructura HTML** | Uso correcto y completo de etiquetas semánticas y jerarquía | Estructura correcta con pequeños errores | Estructura incompleta o poco clara | Estructura incorrecta o desordenada |
+| **CSS y modelo de caja** | Uso correcto y coherente del modelo de caja | Uso aceptable con pequeños fallos | Uso básico y poco consistente | No se entiende o está mal aplicado |
+| **Maquetación** | Interfaz bien distribuida y equilibrada | Maquetación funcional pero mejorable | Maquetación confusa | No hay una maquetación clara |
+| **Diseño de interfaz (UI)** | Diseño profesional, legible y coherente | Diseño correcto | Diseño pobre o poco usable | Diseño descuidado |
+| **Navegación** | Clara, intuitiva y consistente | Navegación funcional | Navegación confusa | Navegación incorrecta |
+| **Organización del proyecto** | Archivos bien estructurados y ordenados | Organización aceptable | Organización mejorable | Desorden total |
+| **Presentación final** | Acabado profesional | Acabado correcto | Acabado básico | Incompleto |
+
+
+# Apéndice A. ¿Qué incluye una guía de estilo básica?
+Una guía de estilo sencilla debería incluir estos 4 bloques:
+## Colores
+Definir la paleta de colores que se va a usar.
+Ejemplo:
+• Color principal: #2c3e50
+• Color secundario: #3498db
+• Color de fondo: #f4f4f4
+• Color de texto: #333333
+• Color de énfasis: #e74c3c
+Objetivo: que no aparezcan colores nuevos sin criterio.
+## Tipografías
+Indicar qué fuentes se usan y para qué.
+Ejemplo:
+• Fuente principal: Arial, sans-serif
+• Títulos: tamaño grande y en negrita
+• Texto general: tamaño medio
+• Enlaces: mismo tipo de letra que el texto
+Objetivo: mantener uniformidad y legibilidad.
+## Componentes básicos
+Definir el aspecto de los elementos que se repiten.
+Ejemplo:
+• Botones:
+o Color de fondo
+o Color al pasar el ratón
+o Borde redondeado
+• Tarjetas:
+o Sombra
+o Espaciado interno
+• Enlaces:
+o Color normal
+o Color hover
+o Sin subrayado / con subrayado
+Objetivo: que todos los botones y tarjetas sean iguales.
+## Espaciados y estructura
+Reglas generales de separación y tamaño.
+Ejemplo:
+• Margen entre secciones: 40px
+• Padding interno de cajas: 20px
+• Ancho máximo del contenido: 1000px
+• Footer siempre separado del contenido
+Objetivo: evitar diseños “apretados” o caóticos.
