@@ -1,0 +1,559 @@
+/* 
+   =========================================
+   GUÍA DE ESTILOS Y VARIABLES (Style Guide)
+   =========================================
+   Definimos los valores base aquí para mantener la coherencia visual
+   y facilitar cambios globales.
+*/
+:root {
+    /* Paleta de Colores (Basada en el ejemplo del README) */
+    --color-primary: #2c3e50;    /* Azul oscuro elegante */
+    --color-secondary: #3498db;  /* Azul brillante para acciones */
+    --color-bg: #f4f4f4;         /* Gris muy claro para fondos alternos */
+    --color-bg-alt: #ffffff;     /* Blanco puro */
+    --color-text: #333333;       /* Gris oscuro para lectura */
+    --color-text-light: #ffffff; /* Texto sobre fondos oscuros */
+    --color-emphasis: #e74c3c;   /* Rojo para alertas o énfasis */
+
+    /* Tipografía */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Espaciados y Layout */
+    --spacing-section: 80px;
+    --spacing-container: 20px;
+    --max-width: 1100px;
+    --border-radius: 8px;
+    
+    /* Efectos */
+    --shadow-card: 0 4px 6px rgba(0,0,0,0.1);
+    --transition-speed: 0.3s;
+    --header-height: 70px; /* Altura estimada del header para cálculos de scroll */
+}
+
+/* 
+   =========================================
+   RESET Y BASE (Modelo de Caja)
+   =========================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Fundamental para el cálculo de anchos */
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave al navegar */
+    scroll-padding-top: var(--header-height); /* Evita que el header tape el contenido al navegar */
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    line-height: 1.6;
+    background-color: var(--color-bg-alt);
+}
+
+/* Reset de imágenes para evitar desbordamientos */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Clases de utilidad */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-container);
+}
+
+.section {
+    padding: var(--spacing-section) 0;
+}
+
+.bg-light {
+    background-color: var(--color-bg);
+}
+
+.highlight {
+    color: var(--color-secondary);
+}
+
+/* Tipografía General */
+h1, h2, h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    color: var(--color-primary);
+}
+
+/* Decoración debajo de los títulos H2 */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--color-secondary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-speed);
+}
+
+ul {
+    list-style: none;
+}
+
+/* 
+   =========================================
+   COMPONENTES (Botones, Tarjetas, Forms)
+   =========================================
+*/
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-speed);
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+    background: transparent;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+}
+
+/* 
+   =========================================
+   LAYOUT Y SECCIONES
+   =========================================
+*/
+
+/* Header & Nav */
+.main-header {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 1rem 0;
+    position: sticky; /* Navegación fija al hacer scroll */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 25px;
+}
+
+.main-nav a:hover {
+    color: var(--color-secondary);
+}
+
+/* Hero Section */
+.hero-section {
+    height: 80vh; /* 80% de la altura de la ventana */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #1a252f 100%);
+    color: var(--color-text-light);
+}
+
+.hero-section h1 {
+    color: var(--color-text-light);
+    font-size: 3.5rem;
+}
+
+/* Variación de estilo para encabezados en contexto oscuro (Hero) */
+.hero-section h2 {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+}
+
+.hero-section .subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* Sobre Mí */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap; /* Para responsive */
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover; /* Asegura que la foto no se deforme */
+    border-radius: 50%;
+    border: 5px solid var(--color-secondary);
+}
+
+/* Proyectos (CSS Grid) */
+.projects-grid {
+    display: grid;
+    /* Grid responsive automático: crea tantas columnas como quepan de mín 300px */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--color-bg-alt);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-speed);
+    display: flex;          /* Flexbox para distribución vertical uniforme */
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* Efecto de elevación */
+}
+
+.card-img-placeholder {
+    height: 200px;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+}
+
+.card-content {
+    padding: 25px;
+    flex: 1;                /* Ocupa todo el espacio disponible */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content .btn {
+    margin-top: auto;       /* Empuja el botón siempre al final de la tarjeta */
+    align-self: flex-start;
+}
+
+/* Formulario de Contacto */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--color-bg);
+    padding: 40px;
+    border-radius: var(--border-radius);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    transition: border-color var(--transition-speed);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.social-links {
+    margin-top: 15px;
+}
+
+.social-links a {
+    margin: 0 15px;
+    color: var(--color-secondary);
+    font-weight: bold;
+}
+
+.social-links a:hover {
+    color: var(--color-text-light);
+    text-decoration: underline;
+}
+
+/* 
+   =========================================
+   RESPONSIVE DESIGN (Media Queries)
+   =========================================
+*/
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-nav ul {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .about-content {
+        flex-direction: column-reverse; /* Texto arriba, imagen abajo en móvil */
+        text-align: center;
+    }
+}
+
+/* 
+   =========================================
+   CAROUSEL (CSS Only)
+   =========================================
+   Mecanismo de slider basado en inputs tipo radio para control de estado sin JS.
+*/
+
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden; /* Oculta las diapositivas que están fuera */
+}
+
+.carousel-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Contenedor ancho que se mueve */
+.carousel-slides {
+    display: flex;
+    width: 300%; /* 3 slides = 300% del ancho */
+    height: 100%;
+}
+
+.slide {
+    width: 33.3333%; /* Cada slide ocupa 1/3 del contenedor */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* 
+   Lógica de movimiento y Auto-play 
+   Si el slide 1 está activo (default), activamos la animación.
+   Si el usuario selecciona otro, la animación se detiene y usamos transform.
+*/
+#slide1:checked ~ .carousel-slides {
+    /* Ciclo de 15s (5s por slide) infinito */
+    animation: carousel-autoplay 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+#slide2:checked ~ .carousel-slides {
+    transform: translateX(-33.3333%);
+    transition: transform 0.6s ease;
+}
+#slide3:checked ~ .carousel-slides {
+    transform: translateX(-66.6666%);
+    transition: transform 0.6s ease;
+}
+
+/* Pausar animación si el usuario pasa el ratón por encima */
+.carousel-container:hover .carousel-slides {
+    animation-play-state: paused;
+}
+
+/* Estilos de los puntos de navegación */
+.carousel-nav {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.nav-dot {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--color-text-light);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.nav-dot:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* 
+   Iluminar el punto activo correspondiente 
+   NOTA: Para el slide 1 (Auto-play), animamos los puntos para sincronizarlos.
+   Para slides 2 y 3 (Manual), dejamos el punto fijo.
+*/
+
+/* Estado Manual (Slides 2 y 3) */
+#slide2:checked ~ .carousel-nav label[for="slide2"],
+#slide3:checked ~ .carousel-nav label[for="slide3"] {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Estado Auto-play (Slide 1) - Animación de puntos */
+#slide1:checked ~ .carousel-nav label[for="slide1"] {
+    animation: dot-one 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+#slide1:checked ~ .carousel-nav label[for="slide2"] {
+    animation: dot-two 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+#slide1:checked ~ .carousel-nav label[for="slide3"] {
+    animation: dot-three 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 
+   Estilos de Controles (Flechas) 
+*/
+.carousel-controls .control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border-radius: 50%;
+    display: none; /* Ocultos por defecto */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    user-select: none;
+    transition: background 0.3s;
+    z-index: 5;
+}
+
+.carousel-controls .control:hover {
+    background: var(--color-secondary);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* Mostrar las flechas correspondientes según el slide activo */
+#slide1:checked ~ .carousel-controls .control-1,
+#slide2:checked ~ .carousel-controls .control-2,
+#slide3:checked ~ .carousel-controls .control-3 {
+    display: flex;
+}
+
+/* 
+   Animación Keyframes para Auto-play
+   0% -> Slide 1
+   33% -> Slide 2
+   66% -> Slide 3
+*/
+@keyframes carousel-autoplay {
+    0%, 30% { transform: translateX(0%); }
+    33%, 63% { transform: translateX(-33.3333%); }
+    66%, 96% { transform: translateX(-66.6666%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Keyframes para los puntos de navegación */
+@keyframes dot-one {
+    0%, 30% { background-color: var(--color-secondary); border-color: var(--color-secondary); opacity: 1; transform: scale(1.2); }
+    33%, 96% { background-color: transparent; border-color: var(--color-text-light); opacity: 0.6; transform: scale(1); }
+    100% { background-color: var(--color-secondary); border-color: var(--color-secondary); opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes dot-two {
+    0%, 30% { background-color: transparent; border-color: var(--color-text-light); opacity: 0.6; transform: scale(1); }
+    33%, 63% { background-color: var(--color-secondary); border-color: var(--color-secondary); opacity: 1; transform: scale(1.2); }
+    66%, 100% { background-color: transparent; border-color: var(--color-text-light); opacity: 0.6; transform: scale(1); }
+}
+
+@keyframes dot-three {
+    0%, 63% { background-color: transparent; border-color: var(--color-text-light); opacity: 0.6; transform: scale(1); }
+    66%, 96% { background-color: var(--color-secondary); border-color: var(--color-secondary); opacity: 1; transform: scale(1.2); }
+    100% { background-color: transparent; border-color: var(--color-text-light); opacity: 0.6; transform: scale(1); }
+}
+
+/* Pausar animación de puntos al hacer hover */
+.carousel-container:hover .carousel-nav label {
+    animation-play-state: paused;
+}
