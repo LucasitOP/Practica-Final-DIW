@@ -19,6 +19,11 @@
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#sobre-mi">Sobre mí</a></li>
+                    <li><a href="#certificaciones">Certificaciones</a></li>
+                    <li><a href="#intereses">Intereses</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experiencia">Experiencia</a></li>
+                    <li><a href="#estadisticas">Estadísticas</a></li>
                     <li><a href="#proyectos">Proyectos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
@@ -35,22 +40,22 @@
                 <input type="radio" name="slider" id="slide2" class="carousel-input">
                 <input type="radio" name="slider" id="slide3" class="carousel-input">
 
-                <!-- Contenedor de diapositivas -->
-                <div class="carousel-slides">
+                <!-- Contenedor de diapositivas: aria-live para anunciar cambios a lectores de pantalla -->
+                <div class="carousel-slides" aria-live="polite" aria-atomic="true">
                     <!-- Slide 1: Bienvenida -->
-                    <div class="slide">
+                    <div class="slide" role="group" aria-label="Slide 1 de 3: Bienvenida">
                         <h1>Hola, soy <span class="highlight">Lucas</span></h1>
-                        <p class="subtitle">Desarrollador Web & Entusiasta del Código Limpio</p>
+                        <p class="subtitle">Desarrollador Web </p>
                         <a href="#proyectos" class="btn btn-primary">Ver mis trabajos</a>
                     </div>
                     <!-- Slide 2: Sobre Mí -->
-                    <div class="slide">
+                    <div class="slide" role="group" aria-label="Slide 2 de 3: Sobre mí">
                         <h2>¿Quién soy?</h2>
-                        <p class="subtitle">Estudiante de DAW apasionado por interfaces intuitivas</p>
+                        <p class="subtitle">Estudiante de DAW apasionado por la programación y la tecnología</p>
                         <a href="#sobre-mi" class="btn btn-secondary" style="color: white; border-color: white;">Conóceme mejor</a>
                     </div>
                     <!-- Slide 3: Contacto -->
-                    <div class="slide">
+                    <div class="slide" role="group" aria-label="Slide 3 de 3: Oportunidades">
                         <h2>¿Tienes un proyecto?</h2>
                         <p class="subtitle">Estoy disponible para nuevas oportunidades</p>
                         <a href="#contacto" class="btn btn-primary">Hablemos</a>
@@ -95,6 +100,215 @@
             </div>
         </section>
 
+        <!-- Sección Certificaciones y Logros -->
+        <section id="certificaciones" class="section">
+            <div class="container">
+                <h2>Certificaciones y Logros</h2>
+                <div class="certifications-container">
+                    <!-- Certificación IBM -->
+                    <article class="certification-badge">
+                        <div class="badge-icon">
+                            <span>IBM</span>
+                        </div>
+                        <div class="badge-content">
+                            <h3>Curso de Desarrollo de Software e IA</h3>
+                            <p class="issuer">Emitido por: IBM</p>
+                            <p class="description">Formación especializada en principios de desarrollo de software y aplicaciones de inteligencia artificial. Adquisición de conocimientos en metodologías modernas de desarrollo.</p>
+                            <span class="badge-year">2025</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Intereses y Hobbies -->
+        <section id="intereses" class="section bg-light">
+            <div class="container">
+                <h2>Intereses y Pasiones</h2>
+                <div class="interests-grid">
+                    <!-- Interés 1: Videojuegos -->
+                    <article class="interest-card">
+                        <div class="interest-header">
+                            <h3>🎮 Videojuegos</h3>
+                        </div>
+                        <div class="interest-content">
+                            <p>Apasionado por los videojuegos desde una edad temprana. Más allá del entretenimiento, los juegos me han enseñado resolución de problemas, trabajo en equipo y pensamiento estratégico.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Interés 2: Programación en Nostale -->
+                    <article class="interest-card">
+                        <div class="interest-header">
+                            <h3>💻 Modding & Desarrollo en Nostale</h3>
+                        </div>
+                        <div class="interest-content">
+                            <p>Comencé mi viaje en programación (2017-2019) desarrollando un servidor privado de Nostale junto con amigos. Utilicé Navicat para gestionar bases de datos, escribir scripts y administrar el proyecto colaborativamente en tiempo real.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Interés 3: Tecnología e Innovación -->
+                    <article class="interest-card">
+                        <div class="interest-header">
+                            <h3>🚀 Innovación Tecnológica</h3>
+                        </div>
+                        <div class="interest-content">
+                            <p>Entusiasta de nuevas tecnologías y tendencias. Me interesa especialmente cómo la IA está transformando el desarrollo web y la creación de experiencias digitales únicas.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Skills/Habilidades -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2>Habilidades Técnicas</h2>
+                <div class="skills-grid">
+                    <!-- Frontend -->
+                    <div class="skill-card">
+                        <div class="skill-category">Frontend</div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">HTML5</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">CSS3</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Backend & Databases -->
+                    <div class="skill-card">
+                        <div class="skill-category">Backend & BD</div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Java</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">MySQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Navicat</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools & Other -->
+                    <div class="skill-card">
+                        <div class="skill-category">Herramientas</div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Git & GitHub</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">VS Code</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Responsive Design</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Timeline - Experiencia y Educación -->
+        <section id="experiencia" class="section bg-light">
+            <div class="container">
+                <h2>Trayectoria Académica</h2>
+                <div class="timeline">
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024 - 2026</div>
+                            <h3>Grado Superior en Desarrollo de Aplicaciones Web</h3>
+                            <p>CFGS 2º DAW • Estudiante de 2º curso especializado en desarrollo web full-stack, aplicaciones de escritorio y diseño de interfaces profesionales.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025</div>
+                            <h3>Curso IBM: Desarrollo de Software e IA</h3>
+                            <p>Certificación en principios de desarrollo de software y aplicaciones de inteligencia artificial, completado con éxito.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2017 - 2019</div>
+                            <h3>Servidor Privado Nostale - Proyecto Personal</h3>
+                            <p>Desarrollo de un servidor privado de Nostale junto con amigos. Experiencia en gestión de bases de datos con Navicat, scripting, administración de servidores y trabajo colaborativo. Primer contacto real con programación y desarrollo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Estadísticas -->
+        <section id="estadisticas" class="section">
+            <div class="container">
+                <h2>Logros Destacados</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">Proyectos Completados</div>
+                        <p class="stat-description">Aplicaciones web y herramientas desarrolladas</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">9+</div>
+                        <div class="stat-label">Tecnologías Dominadas</div>
+                        <p class="stat-description">Desde frontend hasta backend y bases de datos</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Certificación IBM</div>
+                        <p class="stat-description">Software Development & AI Fundamentals</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Años de Experiencia</div>
+                        <p class="stat-description">Desde 2017 con servidor privado Nostale</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Sección Proyectos (Grid) -->
         <section id="proyectos" class="section bg-light">
             <div class="container">
@@ -102,22 +316,30 @@
                 <div class="projects-grid">
                     <!-- Proyecto 1 -->
                     <article class="project-card">
-                        <div class="card-img-placeholder">Imagen Proyecto</div>
+                        <figure class="card-image">
+                            <img src="img/buscadorLol.jpg" alt="Captura del Buscador de Campeones - League of Legends" class="project-img" loading="lazy" width="400" height="250">
+                        </figure>
                         <div class="card-content">
-                            <h3>Portfolio Personal</h3>
-                            <p>Diseño y maquetación de un portfolio responsive utilizando HTML5 y CSS3 sin frameworks.</p>
-                            <a href="#" class="btn btn-secondary">Ver detalles</a>
+                            <h3>Buscador de Campeones de League of Legends</h3>
+                            <p> Frontend estático que consume la API Data Dragon (Riot) para mostrar información de campeones de League of Legends.</p>
+                            <a href="https://github.com/LucasitOP/buscadorLeagueOfLegendsPractica" class="btn btn-secondary">Ver proyecto en GitHub</a>
                         </div>
                     </article>
                     <!-- Proyecto 2 -->
                     <article class="project-card">
-                        <div class="card-img-placeholder">Imagen Proyecto</div>
+                        <figure class="card-image">
+                            <img src="img/amigoInvisible.jpg" alt="Captura Amigo Invisible Terminal" class="project-img" loading="lazy" width="400" height="250">
+                        </figure>
                         <div class="card-content">
-                            <h3>Landing Page</h3>
-                            <p>Maquetación de una página de aterrizaje enfocada en la conversión y el diseño visual.</p>
-                            <a href="#" class="btn btn-secondary">Ver detalles</a>
+                            <h3>Amigo Invisible APP</h3>
+                            <p>Aplicación CLI en Java para organizar un "Amigo Invisible" (Secret Santa) pensada para alumnos de 2º DAW.</p>
+                            <a href="https://github.com/LucasitOP/amigoinvisibleTerminal" class="btn btn-secondary">Ver proyecto en GitHub</a>
                         </div>
                     </article>
+                </div>
+                <div class="projects-footer">
+                    <p class="projects-note">Consulta el código fuente y proyectos completos en mi perfil de GitHub:</p>
+                    <a href="https://github.com/LucasitOP?tab=repositories" class="btn btn-primary" target="_blank" rel="noopener noreferrer" aria-label="Ver repositorios en GitHub">Ver mis repositorios en GitHub</a>
                 </div>
             </div>
         </section>
@@ -128,18 +350,18 @@
                 <h2>Contacto</h2>
                 <form class="contact-form" action="#" method="post">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" required autocomplete="name">
+                        <label for="nombre">Nombre <span aria-label="requerido">*</span></label>
+                        <input type="text" id="nombre" name="nombre" required autocomplete="name" aria-required="true">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required autocomplete="email">
+                        <label for="email">Email <span aria-label="requerido">*</span></label>
+                        <input type="email" id="email" name="email" required autocomplete="email" aria-required="true">
                     </div>
                     <div class="form-group">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                        <label for="mensaje">Mensaje <span aria-label="requerido">*</span></label>
+                        <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    <button type="submit" class="btn btn-primary" aria-label="Enviar formulario de contacto">Enviar Mensaje</button>
                 </form>
             </div>
         </section>
@@ -149,8 +371,8 @@
         <div class="container">
             <p>&copy; 2026 Lucas Timoc. Todos los derechos reservados.</p>
             <div class="social-links">
-                <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="https://www.linkedin.com/in/lucas-timoc-908241347" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://github.com/LucasitOP?tab=repositories" aria-label="GitHub">GitHub</a>
             </div>
         </div>
     </footer>
