@@ -1,7 +1,11 @@
 # PracticaFinal DIW
+
 En este Repositorio voy a guardar y documentar la manera en la que voy a realizar mi práctica de CFGS 2º DAW que tengo asignada para finalizar la evaluación de la asignatura en febrero de 2026.
+
 # PROYECTO: PORTFOLIO PROFESIONAL WEB
+
 ## 1. CONTEXTO DEL PROYECTO
+
 Un portfolio profesional es una herramienta fundamental para cualquier perfil técnico del
 ámbito del desarrollo y el diseño web.
 En este proyecto deberás diseñar y maquetar una interfaz web que funcione como portfolio
@@ -9,23 +13,32 @@ profesional, mostrando tu perfil, tus habilidades y trabajos, utilizando únicam
 CSS.
 El objetivo es crear una interfaz clara, usable y visualmente coherente, aplicando los
 conocimientos adquiridos en la asignatura.
+
 ## 2. OBJETIVOS DEL PROYECTO
+
 - Estructurar correctamente documentos HTML usando etiquetas semánticas.
 - Aplicar estilos CSS de forma organizada y coherente.
 - Diseñar una interfaz usable y visualmente adecuada.
 - Separar correctamente estructura (HTML) y presentación (CSS).
 - Maquetar una página web profesional sin usar JavaScript.
+
 ## 3. REQUISITOS FUNCIONALES
+
 El portfolio deberá incluir al menos los siguientes bloques o secciones:
+
 1. Inicio
 2. Sobre mí / Perfil
 3. Proyectos / Trabajos
 4. Contacto (formulario sin funcionalidad).
-Se puede hacer en una sola página (tipo landing page) o usando múltiples páginas.
+   Se puede hacer en una sola página (tipo landing page) o usando múltiples páginas.
+
 ## 4. ESTRUCTURA HTML OBLIGATORIA
+
 Uso correcto de etiquetas semánticas (header, nav, main, section, footer, …), jerarquía de
 encabezados, listas, enlaces, imágenes y atributo alt.
+
 ## 5. REQUISITOS CSS
+
 - Archivo CSS externo.
 - Uso del modelo de caja.
 - Selectores simples y combinados.
@@ -37,12 +50,39 @@ encabezados, listas, enlaces, imágenes y atributo alt.
 - Transiciones/animaciones CSS.
 - Comentarios explicativos en el CSS.
 - Guía de estilos.
+
 ## 6. ORGANIZACIÓN DE ARCHIVOS
+
 Estructura clara de carpetas y archivos (html, css, img).
+
 ## 7. RESTRICCIONES
+
 No se permite JavaScript ni frameworks (React, Tailwind, …). Sólo HTML y CSS.
 
-## 8. RÚBRICA DE EVALUACIÓN
+## 8. Contacto real desde Vercel (opcional)
+
+Se ha añadido un endpoint serverless en [api/contact.js](api/contact.js) y un script cliente en [js/contact.js](js/contact.js) para que el formulario de [index.html](index.html) pueda enviar emails reales.
+
+### Variables de entorno en Vercel
+
+Configura estas variables en el proyecto desplegado:
+
+- `RESEND_API_KEY`: API key de Resend.
+- `CONTACT_TO_EMAIL`: correo donde recibirás los mensajes.
+- `CONTACT_FROM_EMAIL`: remitente verificado en Resend (por ejemplo `Portfolio <onboarding@resend.dev>` en pruebas).
+- `UPSTASH_REDIS_REST_URL`: URL REST de Upstash Redis.
+- `UPSTASH_REDIS_REST_TOKEN`: token REST de Upstash Redis.
+
+### Seguridad incluida
+
+- Límite por IP: 1 mensaje cada 5 minutos (HTTP 429 si se excede).
+- Honeypot anti-bot.
+- Tiempo mínimo de cumplimentación del formulario.
+- Validación de campos y longitud del mensaje.
+
+> Nota: si no configuras Upstash, el formulario seguirá funcionando, pero sin limitación persistente entre invocaciones serverless.
+
+## 9. RÚBRICA DE EVALUACIÓN
 
 Se evaluarán los siguientes aspectos:
 | Criterio | Excelente (10-9) | Adecuado (8-6) | Básico (5-4) | Insuficiente (<4) |
@@ -55,10 +95,12 @@ Se evaluarán los siguientes aspectos:
 | **Organización del proyecto** | Archivos bien estructurados y ordenados | Organización aceptable | Organización mejorable | Desorden total |
 | **Presentación final** | Acabado profesional | Acabado correcto | Acabado básico | Incompleto |
 
-
 # Apéndice A. ¿Qué incluye una guía de estilo básica?
+
 Una guía de estilo sencilla debería incluir estos 4 bloques:
+
 ## Colores
+
 Definir la paleta de colores que se va a usar.
 Ejemplo:
 • Color principal: #2c3e50
@@ -67,7 +109,9 @@ Ejemplo:
 • Color de texto: #333333
 • Color de énfasis: #e74c3c
 Objetivo: que no aparezcan colores nuevos sin criterio.
+
 ## Tipografías
+
 Indicar qué fuentes se usan y para qué.
 Ejemplo:
 • Fuente principal: Arial, sans-serif
@@ -75,7 +119,9 @@ Ejemplo:
 • Texto general: tamaño medio
 • Enlaces: mismo tipo de letra que el texto
 Objetivo: mantener uniformidad y legibilidad.
+
 ## Componentes básicos
+
 Definir el aspecto de los elementos que se repiten.
 Ejemplo:
 • Botones:

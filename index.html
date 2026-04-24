@@ -163,6 +163,7 @@
         <section id="skills" class="section">
             <div class="container">
                 <h2>Habilidades Técnicas</h2>
+                <p class="skills-intro">Además de mis proyectos públicos, también he desarrollado proyectos privados donde he aplicado buenas prácticas de desarrollo, trabajo con <strong>React</strong>, backend en <strong>Java puro</strong> con mini servicios, contenedores con <strong>Docker</strong> y experiencia en <strong>MariaDB</strong> a nivel básico-intermedio. Todos mis proyectos se han gestionado con control de versiones en <strong>GitHub</strong>.</p>
                 <div class="skills-grid">
                     <!-- Frontend -->
                     <div class="skill-card">
@@ -186,6 +187,12 @@
                                     <div class="skill-fill" style="width: 70%"></div>
                                 </div>
                             </div>
+                            <div class="skill-item">
+                                <span class="skill-name">React</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 65%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -194,21 +201,21 @@
                         <div class="skill-category">Backend & BD</div>
                         <div class="skills-list">
                             <div class="skill-item">
-                                <span class="skill-name">Java</span>
+                                <span class="skill-name">Java (backend puro)</span>
                                 <div class="skill-bar">
-                                    <div class="skill-fill" style="width: 85%"></div>
+                                    <div class="skill-fill" style="width: 88%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span class="skill-name">MySQL</span>
+                                <span class="skill-name">Mini servicios en Java</span>
                                 <div class="skill-bar">
                                     <div class="skill-fill" style="width: 80%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
-                                <span class="skill-name">Navicat</span>
+                                <span class="skill-name">MariaDB (nivel básico-intermedio)</span>
                                 <div class="skill-bar">
-                                    <div class="skill-fill" style="width: 75%"></div>
+                                    <div class="skill-fill" style="width: 60%"></div>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +228,13 @@
                             <div class="skill-item">
                                 <span class="skill-name">Git & GitHub</span>
                                 <div class="skill-bar">
-                                    <div class="skill-fill" style="width: 80%"></div>
+                                    <div class="skill-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Docker</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 70%"></div>
                                 </div>
                             </div>
                             <div class="skill-item">
@@ -234,6 +247,12 @@
                                 <span class="skill-name">Responsive Design</span>
                                 <div class="skill-bar">
                                     <div class="skill-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Flujos de trabajo con GitHub</span>
+                                <div class="skill-bar">
+                                    <div class="skill-fill" style="width: 90%"></div>
                                 </div>
                             </div>
                         </div>
@@ -348,7 +367,7 @@
         <section id="contacto" class="section">
             <div class="container">
                 <h2>Contacto</h2>
-                <form class="contact-form" action="#" method="post">
+                <form class="contact-form" id="contact-form" action="#" method="post" novalidate>
                     <div class="form-group">
                         <label for="nombre">Nombre <span aria-label="requerido">*</span></label>
                         <input type="text" id="nombre" name="nombre" required autocomplete="name" aria-required="true">
@@ -361,7 +380,18 @@
                         <label for="mensaje">Mensaje <span aria-label="requerido">*</span></label>
                         <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" aria-label="Enviar formulario de contacto">Enviar Mensaje</button>
+
+                    <!-- Honeypot anti-bot (debe permanecer vacío) -->
+                    <div class="form-group form-honeypot" aria-hidden="true">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <input type="hidden" id="contact_ts" name="contact_ts" value="">
+
+                    <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
+
+                    <button type="submit" class="btn btn-primary" id="contact-submit" aria-label="Enviar formulario de contacto">Enviar Mensaje</button>
                 </form>
             </div>
         </section>
@@ -376,5 +406,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/contact.js" defer></script>
 </body>
 </html>
