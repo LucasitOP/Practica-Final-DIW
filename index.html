@@ -388,6 +388,12 @@
                         <input type="text" id="empresa" name="empresa" tabindex="-1" autocomplete="off">
                     </div>
 
+                    <div class="form-group captcha-group">
+                        <p class="captcha-label">Verificación anti-spam</p>
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAADELfwRPtaLiNrSF"></div>
+                        <p class="captcha-help">Si no vas a usar captcha, deja sin configurar <strong>TURNSTILE_SECRET_KEY</strong> en el servidor.</p>
+                    </div>
+
                     <input type="hidden" id="contact_ts" name="contact_ts" value="">
 
                     <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
@@ -409,6 +415,7 @@
         </div>
     </footer>
 
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="js/contact.js" defer></script>
 </body>
 </html>

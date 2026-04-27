@@ -72,12 +72,17 @@ Configura estas variables en el proyecto desplegado:
 - `CONTACT_FROM_EMAIL`: remitente verificado en Resend (por ejemplo `Portfolio <onboarding@resend.dev>` en pruebas).
 - `UPSTASH_REDIS_REST_URL`: URL REST de Upstash Redis.
 - `UPSTASH_REDIS_REST_TOKEN`: token REST de Upstash Redis.
+- `TURNSTILE_SECRET_KEY` (opcional): secret key de Cloudflare Turnstile para exigir captcha server-side.
+
+Para activar Turnstile en cliente, sustituye `TU_SITE_KEY_TURNSTILE` en [index.html](index.html) por tu site key pública.
 
 ### Seguridad incluida
 
 - Límite por IP: 1 mensaje cada 5 minutos (HTTP 429 si se excede).
+- Límite por IP robusto: si no hay Upstash o falla temporalmente, se aplica fallback en memoria.
 - Honeypot anti-bot.
 - Tiempo mínimo de cumplimentación del formulario.
+- Captcha opcional (Cloudflare Turnstile) validado en servidor si configuras `TURNSTILE_SECRET_KEY`.
 - Validación de campos y longitud del mensaje.
 
 > Nota: si no configuras Upstash, el formulario seguirá funcionando, pero sin limitación persistente entre invocaciones serverless.

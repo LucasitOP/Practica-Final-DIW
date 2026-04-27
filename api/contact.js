@@ -1,5 +1,7 @@
 const FIVE_MINUTES_SECONDS = 300;
 const MIN_FORM_FILL_MS = 2500;
+const FIVE_MINUTES_MS = FIVE_MINUTES_SECONDS * 1000;
+const localRateLimitStore = new Map();
 
 const json = (res, status, payload) => {
   res.status(status).setHeader('Content-Type', 'application/json');
@@ -22,12 +24,36 @@ const isValidEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
+const checkLocalRateLimit = (ip) => {
+  const now = Date.now();
+
+  for (const [key, expiresAt] of localRateLimitStore.entries()) {
+    if (expiresAt <= now) {
+      localRateLimitStore.delete(key);
+    }
+  }
+
+  const key = `contact:ip:${ip}`;
+  const currentExpiry = localRateLimitStore.get(key) || 0;
+
+  if (currentExpiry > now) {
+    return {
+      allowed: false,
+      mode: 'memory',
+      retryAfterSeconds: Math.ceil((currentExpiry - now) / 1000)
+    };
+  }
+
+  localRateLimitStore.set(key, now + FIVE_MINUTES_MS);
+  return { allowed: true, mode: 'memory', retryAfterSeconds: 0 };
+};
+
 const checkRateLimit = async (ip) => {
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
 
   if (!url || !token) {
-    return { allowed: true, mode: 'disabled' };
+    return checkLocalRateLimit(ip);
   }
 
   const key = `contact:ip:${ip}`;
@@ -41,11 +67,65 @@ const checkRateLimit = async (ip) => {
   });
 
   if (!response.ok) {
-    return { allowed: true, mode: 'failed-open' };
+    return checkLocalRateLimit(ip);
   }
 
   const data = await response.json();
-  return { allowed: data.result === 'OK', mode: 'upstash' };
+  if (data.result === 'OK') {
+    return { allowed: true, mode: 'upstash', retryAfterSeconds: 0 };
+  }
+
+  const ttlEndpoint = `${url}/ttl/${encodeURIComponent(key)}`;
+  const ttlResponse = await fetch(ttlEndpoint, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  let retryAfterSeconds = FIVE_MINUTES_SECONDS;
+  if (ttlResponse.ok) {
+    const ttlData = await ttlResponse.json().catch(() => null);
+    const ttlValue = Number(ttlData?.result);
+    if (Number.isFinite(ttlValue) && ttlValue > 0) {
+      retryAfterSeconds = ttlValue;
+    }
+  }
+
+  return { allowed: false, mode: 'upstash', retryAfterSeconds };
+};
+
+const verifyTurnstileToken = async ({ token, ip }) => {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+
+  if (!secret) {
+    return { enabled: false, ok: true };
+  }
+
+  if (!token) {
+    return { enabled: true, ok: false };
+  }
+
+  const params = new URLSearchParams({
+    secret,
+    response: token,
+    remoteip: ip
+  });
+
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: params
+  });
+
+  if (!response.ok) {
+    return { enabled: true, ok: false };
+  }
+
+  const data = await response.json().catch(() => null);
+  return { enabled: true, ok: Boolean(data?.success) };
 };
 
 const sendEmail = async ({ nombre, email, mensaje, ip }) => {
@@ -93,7 +173,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { nombre, email, mensaje, empresa, contact_ts } = req.body || {};
+    const { nombre, email, mensaje, empresa, contact_ts, cf_turnstile_token } = req.body || {};
 
     if (empresa) {
       return json(res, 200, { message: 'OK' });
@@ -121,11 +201,25 @@ export default async function handler(req, res) {
     }
 
     const ip = getClientIp(req);
+    const captchaCheck = await verifyTurnstileToken({
+      token: String(cf_turnstile_token || '').trim(),
+      ip
+    });
+
+    if (!captchaCheck.ok) {
+      return json(res, 400, {
+        message: captchaCheck.enabled
+          ? 'Captcha inválido o ausente. Inténtalo de nuevo.'
+          : 'No se pudo verificar el captcha.'
+      });
+    }
+
     const rateLimit = await checkRateLimit(ip);
 
     if (!rateLimit.allowed) {
+      res.setHeader('Retry-After', String(rateLimit.retryAfterSeconds || FIVE_MINUTES_SECONDS));
       return json(res, 429, {
-        message: 'Solo se permite 1 mensaje cada 5 minutos. Inténtalo de nuevo más tarde.'
+        message: `Solo se permite 1 mensaje cada 5 minutos. Espera ${rateLimit.retryAfterSeconds || FIVE_MINUTES_SECONDS}s e inténtalo de nuevo.`
       });
     }
 

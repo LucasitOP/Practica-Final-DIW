@@ -26,7 +26,8 @@
       email: String(formData.get('email') || '').trim(),
       mensaje: String(formData.get('mensaje') || '').trim(),
       empresa: String(formData.get('empresa') || '').trim(),
-      contact_ts: String(formData.get('contact_ts') || '').trim()
+      contact_ts: String(formData.get('contact_ts') || '').trim(),
+      cf_turnstile_token: String(formData.get('cf-turnstile-response') || '').trim()
     };
 
     if (!payload.nombre || !payload.email || !payload.mensaje) {

@@ -649,6 +649,22 @@ ul {
     pointer-events: none;
 }
 
+.captcha-group {
+    margin-top: 4px;
+}
+
+.captcha-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.captcha-help {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
 .contact-status {
     min-height: 24px;
     margin: 10px 0 16px;
