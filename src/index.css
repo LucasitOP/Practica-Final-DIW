@@ -1,0 +1,404 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --retro-cursor-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='7' y='7' width='18' height='18' rx='5' fill='rgba(0,0,0,0.25)'/%3E%3Crect x='7.5' y='7.5' width='17' height='17' rx='5' fill='none' stroke='%237c3aed' stroke-width='1.8'/%3E%3Ccircle cx='16' cy='16' r='3.3' fill='%2310b981'/%3E%3C/svg%3E") 16 16, auto;
+  --retro-cursor-pointer: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='5' y='5' width='22' height='22' rx='6' fill='rgba(0,0,0,0.22)'/%3E%3Crect x='5.5' y='5.5' width='21' height='21' rx='6' fill='none' stroke='%2310b981' stroke-width='1.9'/%3E%3Cpath d='M16 9 L19.5 16 L16 23 L12.5 16 Z' fill='%23c4b5fd'/%3E%3C/svg%3E") 16 16, pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Trebuchet MS', 'Verdana', sans-serif;
+  color: #efe7f8;
+  cursor: var(--retro-cursor-default);
+  background:
+    radial-gradient(circle at top, rgba(168, 85, 247, 0.22), transparent 26%),
+    radial-gradient(circle at 80% 18%, rgba(16, 185, 129, 0.12), transparent 22%),
+    radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.1), transparent 28%),
+    linear-gradient(180deg, #09060f 0%, #120c1d 42%, #050408 100%);
+}
+
+a,
+button,
+[role='button'],
+summary {
+  cursor: var(--retro-cursor-pointer);
+}
+
+input,
+textarea,
+select {
+  cursor: text;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+main {
+  display: block;
+}
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl text-center mb-12;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a {
+    @apply transition duration-300;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .retro-section {
+    @apply py-24 relative overflow-hidden;
+  }
+
+  .retro-bg-void {
+    background:
+      radial-gradient(circle at 12% 18%, rgba(168, 85, 247, 0.14), transparent 30%),
+      radial-gradient(circle at 88% 22%, rgba(16, 185, 129, 0.08), transparent 24%),
+      linear-gradient(180deg, rgba(10, 6, 16, 0.94) 0%, rgba(18, 10, 30, 0.92) 100%);
+  }
+
+  .retro-bg-void::before,
+  .retro-bg-grid::before,
+  .retro-bg-circuit::before,
+  .retro-bg-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .retro-bg-void::after,
+  .retro-bg-grid::after,
+  .retro-bg-circuit::after,
+  .retro-bg-neon::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.22;
+    animation: retroDrift 18s linear infinite;
+  }
+
+  .retro-bg-grid {
+    background:
+      linear-gradient(180deg, rgba(11, 7, 18, 0.96) 0%, rgba(8, 5, 14, 0.94) 100%),
+      radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08), transparent 18%),
+      radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.08), transparent 20%);
+  }
+
+  .retro-bg-grid::before {
+    background-image:
+      radial-gradient(circle, rgba(255, 255, 255, 0.05) 1.1px, transparent 1.6px),
+      linear-gradient(45deg, transparent 47%, rgba(168, 85, 247, 0.14) 47%, rgba(168, 85, 247, 0.14) 53%, transparent 53%);
+    background-size: 18px 18px, 120px 120px;
+    background-position: 0 0, 20px 20px;
+    opacity: 0.28;
+  }
+
+  .retro-bg-grid::after {
+    background-image:
+      linear-gradient(90deg, rgba(16, 185, 129, 0.14) 1px, transparent 1px),
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 72px 72px, 28px 28px;
+    opacity: 0.16;
+  }
+
+  .retro-bg-circuit {
+    background:
+      linear-gradient(180deg, rgba(8, 5, 14, 0.98) 0%, rgba(18, 10, 29, 0.96) 100%),
+      linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, transparent 35%),
+      linear-gradient(225deg, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
+      repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, 0.025) 22px 23px),
+      repeating-linear-gradient(0deg, transparent 0 22px, rgba(16, 185, 129, 0.018) 22px 23px);
+  }
+
+  .retro-bg-circuit::before {
+    background-image:
+      radial-gradient(circle, rgba(16, 185, 129, 0.2) 0 1.4px, transparent 1.8px),
+      linear-gradient(90deg, transparent 0 26px, rgba(16, 185, 129, 0.12) 26px 27px, transparent 27px 54px, rgba(168, 85, 247, 0.12) 54px 55px, transparent 55px 84px);
+    background-size: 24px 24px, 84px 84px;
+    background-position: 0 0, 0 0;
+    opacity: 0.24;
+  }
+
+  .retro-bg-circuit::after {
+    background-image:
+      linear-gradient(135deg, transparent 48%, rgba(16, 185, 129, 0.14) 48%, rgba(16, 185, 129, 0.14) 52%, transparent 52%),
+      linear-gradient(225deg, transparent 48%, rgba(168, 85, 247, 0.12) 48%, rgba(168, 85, 247, 0.12) 52%, transparent 52%);
+    background-size: 140px 140px, 180px 180px;
+    background-position: 20px 20px, 0 0;
+    opacity: 0.18;
+  }
+
+  .retro-bg-neon {
+    background:
+      radial-gradient(circle at 18% 20%, rgba(16, 185, 129, 0.15), transparent 22%),
+      radial-gradient(circle at 78% 76%, rgba(168, 85, 247, 0.14), transparent 28%),
+      linear-gradient(180deg, rgba(18, 11, 29, 0.96) 0%, rgba(8, 5, 13, 0.95) 100%);
+  }
+
+  .retro-bg-neon::before {
+    background-image:
+      radial-gradient(circle, rgba(168, 85, 247, 0.22) 0 1.6px, transparent 2.1px),
+      radial-gradient(circle, rgba(16, 185, 129, 0.16) 0 1px, transparent 1.6px);
+    background-size: 22px 22px, 36px 36px;
+    background-position: 0 0, 12px 12px;
+    opacity: 0.22;
+  }
+
+  .retro-bg-neon::after {
+    background-image:
+      linear-gradient(0deg, transparent 0 50%, rgba(255, 255, 255, 0.02) 50% 51%, transparent 51% 100%),
+      linear-gradient(90deg, transparent 0 50%, rgba(16, 185, 129, 0.08) 50% 51%, transparent 51% 100%);
+    background-size: 160px 160px, 160px 160px;
+    opacity: 0.12;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-black text-center mb-12 text-violet-100 relative;
+  }
+
+  .retro-title {
+    text-shadow: 0 0 18px rgba(168, 85, 247, 0.35), 0 0 30px rgba(16, 185, 129, 0.15);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border-2 border-emerald-300 bg-emerald-300 text-[#09060f] font-bold shadow-lg shadow-emerald-500/20 hover:-translate-y-1 hover:shadow-emerald-400/30 hover:bg-emerald-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full border-2 border-violet-200 text-violet-100 font-bold bg-transparent hover:bg-violet-100 hover:text-[#09060f] hover:-translate-y-1;
+  }
+
+  .retro-card {
+    @apply relative rounded-3xl border border-violet-200/15 bg-black/35 p-6 shadow-2xl shadow-black/45 backdrop-blur-sm;
+  }
+
+  .retro-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.08);
+    pointer-events: none;
+  }
+
+  .card {
+    @apply retro-card transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .retro-badge {
+    @apply flex h-20 w-20 items-center justify-center rounded-2xl border border-emerald-300/40 bg-emerald-300/10 text-center text-emerald-100 font-black shadow-lg shadow-emerald-500/10;
+  }
+
+  .retro-timeline {
+    @apply relative mt-10 space-y-10;
+  }
+
+  .retro-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(168, 85, 247, 0.8), rgba(16, 185, 129, 0.8));
+  }
+
+  .retro-timeline-item {
+    @apply relative pl-16;
+  }
+
+  .retro-timeline-marker {
+    @apply absolute left-[11px] top-8 h-5 w-5 rounded-full bg-emerald-300 shadow-lg shadow-emerald-400/30;
+  }
+
+  .retro-input {
+    @apply w-full rounded-2xl border border-violet-200/20 bg-black/35 px-4 py-3 text-violet-50 placeholder:text-violet-100/40 outline-none transition focus:border-emerald-300 focus:ring-2 focus:ring-emerald-300/20;
+  }
+
+  .retro-label {
+    @apply mb-2 block text-xs font-bold uppercase tracking-[0.24em] text-violet-100;
+  }
+
+  .rain-drop {
+    position: absolute;
+    top: -160px;
+    width: 2px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(236, 72, 153, 0) 0%, rgba(16, 185, 129, 0.8) 55%, rgba(236, 72, 153, 0.35) 100%);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.35);
+    animation-name: rainFall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform, opacity;
+  }
+
+  .retro-dot {
+    position: absolute;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.95) 0%, rgba(168, 85, 247, 0.78) 55%, transparent 72%);
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.25);
+    animation: dotFloat 8s ease-in-out infinite;
+    opacity: 0.7;
+    will-change: transform, opacity;
+  }
+
+  .retro-square {
+    position: absolute;
+    border: 1px solid rgba(168, 85, 247, 0.55);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(168, 85, 247, 0.08));
+    box-shadow: 0 0 16px rgba(168, 85, 247, 0.18);
+    animation: squareFloat 10s ease-in-out infinite;
+    border-radius: 4px;
+    will-change: transform, opacity;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatGlow {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes retroDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-40px, 40px, 0);
+  }
+}
+
+@keyframes rainFall {
+  0% {
+    transform: translateY(-160px) translateX(0);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.55;
+  }
+
+  100% {
+    transform: translateY(115vh) translateX(18px);
+    opacity: 0;
+  }
+}
+
+@keyframes dotFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(-16px) scale(1.18);
+    opacity: 0.95;
+  }
+}
+
+@keyframes squareFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rotate, 0deg));
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(calc(var(--rotate, 0deg) + 12deg));
+    opacity: 0.95;
+  }
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+.animate-slideInDown {
+  animation: slideInDown 0.6s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.animate-floatGlow {
+  animation: floatGlow 5s ease-in-out infinite;
+}
